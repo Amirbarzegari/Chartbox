@@ -8,7 +8,7 @@ async function getCoin(input) {
   if (coin.error) notFound();
   return {
     name: coin.name,
-    description: coin.description.en,
+    description: coin.description.en.split(".")[0] + ".",
     symbol: coin.symbol,
     image: coin.image.large,
     price: coin.market_data.current_price.usd,
@@ -33,7 +33,7 @@ export default async function page({ params }) {
       </div>
       <div className="flex justify-between">
         <span className="text-gray-500">Price</span>
-        <span>{price}$</span>
+        <span>${price.toLocaleString("en-US")}</span>
       </div>
       <div className="flex flex-col gap-4">
         <span className="text-gray-500">Description</span>

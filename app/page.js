@@ -1,14 +1,12 @@
 "use client";
 import Button from "@/components/Button";
 import { useState } from "react";
-import Link from "next/link";
+import { Link, useRouter } from "next/navigation";
 
 export default function Home() {
   const [symbol, setSymbol] = useState("");
+  const router = useRouter();
 
-  const handleSearch = () => {
-    <Link href={`/coin/${symbol}`} />;
-  };
   return (
     <div className="flex flex-col max-w-lg gap-4 p-10 w-full h-full justify-center">
       <h1 className="text-xl font-bold">Crypto</h1>
@@ -22,7 +20,8 @@ export default function Home() {
           onChange={(e) => setSymbol(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              handleSearch();
+              e.preventDefault();
+              router.push(`/coin/${symbol}`);
             }
           }}
         />

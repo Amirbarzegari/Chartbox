@@ -1,7 +1,8 @@
 "use client";
+
 import Button from "@/components/Button";
 import { useState } from "react";
-import { Link, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [symbol, setSymbol] = useState("");
